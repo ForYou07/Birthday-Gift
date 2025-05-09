@@ -1,797 +1,173 @@
-@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Titan+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Sriracha&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Archivo:ital,wght@0,100..900;1,100..900&family=Bilbo+Swash+Caps&family=Inter:opsz,wght@14..32,500&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap');
+
+
+:root {
+    --tombol-bg: rgb(20 4 4 / 59%);
+    --tombol-teks: #fff;
+    --tombol-bingkai: #fff;
+    --bingkai: 8px;
+    --bingkai-kiri: 1.3px solid var(--tombol-bingkai);
+    --bingkai-kanan: 1.3px solid var(--tombol-bingkai);
+    --gaya-font: 'Archivo', sans-serif;
+    --gaya-font2: 'Dancing Script', sans-serif;
 }
-:root{
-    --color-pink: #feecea;
-    --color-white: #fff;
-    --color-black: #333;
-    --color-text-pink: #ff7882;
-    --color-heart: #F61F1F;
-    --color-bg-letter: #fff8e4;
-    --color-border: #DACCBF;
-}
-html{
-    height: 100%;
-}
+
 body {
-    position: relative;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-image:linear-gradient(var(--color-pink), var(--color-pink));
-}
-#wrapper{
-    position: relative;
-    background-color: transparent;
-    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
-    height:100%;
-    background-size:80px 80px;
-    overflow: hidden;
-    z-index: 1;
-}
-.flag__birthday{
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-200px);
-    animation: translateYFlag 1.5s 2s forwards;
-}
-@keyframes translateYFlag{
-    to{
-        transform: translateY(-10px);
-    }
-}
-.flag__birthday .flag__left{
-    transform: rotate(-10deg) translate(-20px,30px);
-}
-.flag__birthday .flag__right{
-    transform: rotate(10deg) translate(20px,30px) scaleX(-1);
-}
-.content{
-    width: 100%;
-    position: relative;
-    display: flex;
-    padding-top: 3rem;
-}
-.content .left, .content .right{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.content .left{
-    width: 40%;
-}
-.content .right{
-    width: 60%;
-}
-.left .btn{
-    transform: scale(0);
-    animation: scaleCricle 2s 16s forwards ease-in-out;
-}
-#btn__letter{
-    position: relative;
-    margin-top: 30px;
-    background-color: var(--color-text-pink);
-    outline: none;
-    padding: 5px 15px;
-    font-size: 1rem;
-    border-radius: 50px;
-    border: 3px solid var(--color-black);
-    font-family: "Sriracha", cursive;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    transform: scale(1);
-    transition: all .5s ease-in-out;
-}
-#btn__letter:active{
-    transform: scale(0.7);
-}
-#btn__letter i{
-    margin-left: 5px;
-}
-#btn__letter:hover{
-    border-color: var(--color-heart);
-    background-color: var(--color-heart);
-    color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-#btn__letter:hover i{
-    animation: rotateHeart 1s infinite linear;
-}
-@keyframes rotateHeart{
-    0%,50%, 100%{
-        transform: rotate(0deg);
-    }
-    25%{
-        transform: rotate(12deg);
-    }
-    75%{
-        transform: rotate(-12deg);
-    }
-}
-.title{
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "Titan One", sans-serif;
-    font-size: 3rem;
-    flex-direction: column;
-    perspective: 1000px;
-}
-.title .happy, .title .birthday{
-    position: relative;
-    text-shadow: 4px 4px var(--color-black), 
-                -4px 4px var(--color-black), 
-                4px -4px var(--color-black), 
-                -4px -4px var(--color-black), 
-                4px 8px 0 var(--color-black);
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-}
-.title .happy{
-    color: var(--color-white);
-}
-.title .happy span, .title .birthday span{
-    transform: translateY(50px);
-    opacity: 0;
-    visibility: hidden;
-    animation: txtTranslateY .5s var(--t) forwards;
-}
-@keyframes txtTranslateY{
-    100%{
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-}
-.title .birthday{
-    color: var(--color-text-pink);
-}
-
-.title .hat{
-    position: absolute;
-    right: 45px;
-    top: -350px;
-    transform: rotate(-40deg);
-    z-index: -1;
-    animation: topHat 4s 7s forwards ease;
-}
-@keyframes topHat{
-    20%, 30%{
-        top: -30px;
-        transform-origin: left;
-        transform: rotate(-40deg);
-    }
-    35%, 100%{
-        top: -30px;
-        transform: rotate(0deg);
-    }
-}
-.date__of__birth, .name{
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    background-color: var(--color-text-pink);
-    border-radius: 50px;
-    margin-top: 20px;
-    font-family: "Sriracha", cursive;
-    
-}
-.date__of__birth{
-    border: 3px solid var(--color-black);
-    position: relative;
-    transform: translateY(-100px);
-    z-index: -1;
-    opacity: 0;
-    visibility: hidden;
-    width: 0px;
-    animation: dateOfBirth 5s 9s forwards;
-}
-@keyframes dateOfBirth{
-    20%,40%{
-        width: 0px;
-        height: 0;
-        transform: translateY(0px);
-        opacity: 1;
-        visibility: visible;
-    }
-    45%{
-        transform: translateY(0px);
-        opacity: 1;
-        visibility: visible;
-        width: 300px;
-        height: 0px;
-    }
-    50%,100%{
-        transform: translateY(0px);
-        opacity: 1;
-        visibility: visible;
-        width: 300px;
-        height: 50px;
-    }
-}
-.name{
-    position: absolute;
-    padding: 0px 40px;
-    bottom: -20px;
-    border: 3px solid var(--color-black);
-}
-.date__of__birth span, .name span{
-    font-weight: bold;
-    margin: 0px 40px;
-}
-.date__of__birth span{
-    font-size: 1.2rem;
-}
-.name span{
-    font-size: 1.7rem;
-}
-.right .box__account{
-    position: relative;
-    transform: translateY(700px);
-    animation: topBoxImage 8s 7s forwards ease-in;
-}
-@keyframes topBoxImage{
-    to{
-        transform: translateY(0);
-    }
-}
-.content .right .image{
-    position: relative;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    border: 6px solid var(--color-black);
-}
-.content .right .image img{
-    width: 100%;
-    object-fit: cover;
-
-}
-.cricle{
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
-    animation: scaleCricle 3s 15s forwards ease-in-out;
-}
-@keyframes scaleCricle {
-    0%{
-        transform: scale(0);
-    }
-    10%{
-        transform: scale(1.3);
-    }
-    20%{
-        transform: scale(0.7);
-    }
-    30%,100%{
-        transform: scale(1);
-    }
-
-}
-.text__cricle{
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-text-pink);
-    border-radius: 50%;
-    border: 5px solid var(--color-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotateCricle 5s linear infinite;
-}
-@keyframes rotateCricle{
-    to{
-        transform: rotate(360deg);
-    }
-}
-.text__cricle span{
-    top: 0%;
-    left: 50%;
-    position: absolute;
-    color: var(--color-black);
-    transform: rotate(calc(var(--i) * 24deg));
-    transform-origin: 0 45px;
-    font-family: "Sriracha", cursive;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-}
-.fa-heart{
-    color: var(--color-heart);
-    filter: drop-shadow(0 0 3px var(--color-heart));
-    animation: scaleHeart 1s infinite linear;
-}
-.cricle .fa-heart{
-    position: absolute;
-    transform: scale(0.85);
-}
-@keyframes scaleHeart{
-    50%{
-        transform: scale(1.2);
-    }
-}
-.right .balloon_one{
-    position: absolute;
-    top: -70px;
-    left: -70px;
-    animation: balloon1 2s infinite linear;
-}
-@keyframes balloon1{
-    0%, 50%,100%{
-        transform-origin: bottom right;
-        transform: rotate(0deg);
-    }
-    25%{
-        transform-origin: bottom right;
-        transform: rotate(3deg);
-    }
-    75%{
-        transform-origin: bottom right;
-        transform: rotate(-3deg);
-    }
-}
-.right .balloon_two{
-    position: absolute;
-    top: 170px;
-    right: -65px;
-    z-index: -1;
-    transform: rotate(10deg);
-    animation: balloon2 2s infinite linear;
-}
-@keyframes balloon2 {
-    0%,50%,100%{
-        transform-origin: bottom left;
-        transform: rotate(10deg);
-    }
-    25%{
-        transform-origin: bottom left;
-        transform: rotate(7deg);
-    }
-    75%{
-        transform-origin: bottom left;
-        transform: rotate(13deg);
-    }
-}
-
-.decorate_star{
-    position: absolute;
-    transform: scale(0);
-    background-color: var(--color-black);
-    clip-path: polygon(0 50%, 35% 35%, 50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%);
-    animation: scaleCricle 3s var(--t) forwards, 
-            scaleStar 2s 16s infinite ease-in-out;
-}
-.decorate_star.star1{
-    width: 20px;
-    height: 20px;
-    top: 75px;
-    left: 300px;
-}
-.decorate_star.star2{
-    width: 15px;
-    height: 20px;
-    top: 35px;
-    right: 360px;
-}
-.decorate_star.star3{
-    width: 14px;
-    height: 14px;
-    top: 290px;
-    left: 630px;
-}
-.decorate_star.star4{
-    width: 18px;
-    height: 18px;
-    bottom: 60px;
-    left: 35px;
-}
-.decorate_star.star5{
-    width: 16px;
-    height: 18px;
-    bottom: 140px;
-    left: 500px;
-}
-@keyframes scaleStar {
-    25%{
-        transform: scale(0.8);
-    }
-    50%{
-        transform: scale(1.1);
-    }
-}
-.decorate_bottom{
-    position: absolute;
-    right: 0;
-    bottom: -10px;
-}
-.decorate_flower--one{
-    position: absolute;
-    top: 250px;
-    left: 50px;
-    transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
-}
-.decorate_flower--two{
-    position: absolute;
-    top: 225px;
-    left: 540px;
-    transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
-}
-.decorate_flower--three{
-    position: absolute;
-    top: 150px;
-    right: 235px;
-    transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
-}
-.smiley__icon{
-    position: absolute;
-    bottom: 180px;
-    left: 600px;
-    transform: scale(0);
-    animation: scaleCricle 3s 15s forwards ease-in-out;
-}
-
-
-.box__letter{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    display: none;
-}
-.box__letter .letter__border{
-    position: absolute;
-    width: 55vw;
-    height: 450px;
-    background-color: var(--color-white);
-    border-radius: 27px;
-    padding: 17px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: none;
-}
-.letter__border .close{
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--color-white);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    cursor: pointer;
-}
-.letter__border .letter{
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-bg-letter);
-    border-radius: 10px;
-    padding-top: 15px;
-}
-.letter__border .letter .title__letter{
-    text-align: center;
-    font-family: 'Dancing Script', cursive;
-    font-weight: bold;
-    font-size: 2.5rem;
-}
-.title__letter .fa-solid{
-    margin-left: 5px;
-    font-size: 0.8rem;
-}
-.letter__border .letter .content__letter{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    padding-top: 1.5rem;
-    padding-bottom: 70px;
-}
-.letter__border .letter .content__letter .left{
-    position: relative;
-    width: 50%;
-    height: 100%;
-    padding: 1.7rem;
-    border-right: 3px solid var(--color-border);
-}
-.content__letter .left #heart__letter{
-    opacity: 0;
-    width: 100%;
-}
-#heart__letter.animationOp{
-    animation: opacityHeart 1s 1s forwards;
-}
-@keyframes opacityHeart{
-    to{
-        opacity: 1;
-    }
-}
-.content__letter .left .heart{
-    position: absolute;
-    opacity: 0;
-}
-.content__letter .left .heart.animation{
-    animation: scaleHeartLetter 1s var(--t) infinite ease-in-out;
-}
-@keyframes scaleHeartLetter{
-    0%{
-        opacity: 1;
-        transform: scale(0);
-    }
-    10%{
-        opacity: 1;
-        transform: scale(1.3);
-    }
-    20%{
-        opacity: 1;
-        transform: scale(0.7);
-    }
-    30%,100%{
-        opacity: 1;
-        transform: scale(1);
-    }
-    
-}
-.content__letter .left .heart_1{
-    top: 90px;
-    left: 30px;
-}
-.content__letter .left .heart_2{
-    top: 20px;
-    right: 70px;
-}
-.content__letter .left .heart_3{
-    bottom: 50px;
-    left: 145px;
-}
-.content__letter .left .heart_4{
-    top: 140px;
-    right: 35px;
-}
-.content__letter .right{
-    position: relative;
-    width: 50%;
-}
-.content__letter .right .love__img{
-    opacity: 0;
-    position: absolute;
-    right: 20px;
-    top: -100px;
-}
-.love__img.animationOp{
-    animation: opacityHeart 1s 1s forwards;
-}
-.content__letter .right .text__letter{
-    margin-top: 60px;
-    padding: 20px 15px 10px 15px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.0rem;
-}
-.content__letter .right #mewmew{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    opacity: 0;
-}
-#mewmew.animationOp{
-    animation: opacityHeart 1s 1s forwards;
-}
-
-
-#copy {
-    position: fixed;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1rem;
-}
-
-#copy a {
-    text-decoration: none;
-    color: #191919d7;
-}
-
-#copy p {
-    color: #ff3d5a;
-    text-align: center;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-
-
-@media screen and (max-width: 658px)   {
-
-    .flag__birthday .flag__left {
-        transform: rotate(-10deg) translate(-119px,3px);
-    }
-
-    .flag__birthday .flag__right {
-        transform: rotate(10deg) translate(-106px,39px) scaleX(-1);
-    }
-
-    .content {
-        width: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 25px;
-        align-items: center;
-        padding-top: 2rem;
-    }
-
-    .title {
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        font-family: "Titan One", sans-serif;
-        font-size: 1.5rem;
-        letter-spacing: 8px;
-        flex-direction: column;
-        perspective: 1000px;
-    }
-
-    #btn__letter {
-        position: relative;
-        margin-top: 17px;
-        width: 209px;
-        background-color: var(--color-text-pink);
-        outline: none;
-        padding: 6px 4px;
-        font-size: 1rem;
-        border-radius: 50px;
-        border: 3px solid var(--color-black);
-        font-family: "Sriracha", cursive;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 2;
-        /* transform: scale(1); */
-        transition: all .5s ease-in-out;
-    }
-
-    .cricle {
-        position: absolute;
-        top: 10px;
-        right: -54px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: scale(0);
-        animation: scaleCricle 3s 15s forwards ease-in-out;
-    }
-
-    .title .hat {
-        position: absolute;
-        right: -98px;
-        top: -51px !important;
-        transform: rotate(-40deg);
-        z-index: -1;
-        animation: topHat 4s 7s forwards ease;
-    }
-
-    .box__letter .letter__border {
-        position: absolute;
-        width: 90vw;
-        height: 315px;
-        background-color: var(--color-white);
-        border-radius: 27px;
-        padding: 17px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        display: none;
-    }
-
-    .letter__border .letter {
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-bg-letter);
-        border-radius: 10px;
-        padding-top: 15px;
-    }
-
-    .letter__border .letter .title__letter {
-        text-align: center;
-        font-family: 'Dancing Script', cursive;
-        font-weight: bold;
-        font-size: 1.4rem;
-    }
-
-    .letter__border .letter .content__letter {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        padding-top: .7rem;
-        padding-bottom: 70px;
-    }
-
-    .content__letter .right .text__letter {
-        margin-top: -14px;
-        padding: 20px 15px 10px 15px;
-        font-family: 'Dancing Script', cursive;
-        font-size: .8rem;
-    }
-
-    .content__letter .right .love__img {
+    font-family: "Archivo", sans-serif;
+    height: 100vh;
+}
+    @keyframes fanim {0% {background-position: 0% 0%;}25% {background-position: 100% 100%;} 50% {background-position: 0% 100%;} 75% {background-position: 50% 50%;} 100% {background-position: 0% 0%;}}
+    /* body{    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);font-family:var(--gaya-font);padding: 20px 25px;-webkit-user-select: none; -ms-user-select: none; user-select: none;} a{text-decoration:none;} */
+    /* body::before{content:"\00A9  Rayys | PalingIT";color:white;opacity:.05;font-size:10px;position:fixed;bottom:25px;right:25px;z-index:2} */
+    #bodyblur {
         opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, #ffe1e1, #ff217de0), url(./r.jpg);
+        transition: all 1s ease;
+    }
+    #wallpaper{width:100%;height:100%;transform: scale(2);transition:all 1.3s ease;}
+    #beneranblur{position:fixed;top:0;left:0;right:0;bottom:0;-webkit-backdrop-filter:blur(0px); backdrop-filter:blur(0px);transition:all 3s ease;}
+    
+    @keyframes jj{0%  {transform: scale(1.1);} 50% {transform: scale(1.2);} 100% {transform: scale(1.1);}}
+    @keyframes rts{from {transform:scale(.1);} to {transform:scale(1);}}
+    @keyframes rto{from {transform:scale(1);} to {transform:scale(1.1);}}
+    @keyframes aniopa{0% {transform: scale(1);} 50% {transform: scale(.75);} 100% {transform: scale(1);}}
+    @keyframes rtf{from {transform: rotate(0deg);} to {transform: rotate(360deg);}} @keyframes rt{from {transform: scale(.9);/* transform: rotate(-5deg); */} to {transform: scale(1);/* transform: rotate(5deg); */}}
+    @keyframes kont{0%  {left:-1px; top:-3px;} 50% {left:1px; top:3px;} 100% {left:-1px; top:-3px;}}
+    
+    blockquote {
         position: absolute;
-        right: 126px;
-        top: 167px;
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 100px;
+        background: rgb(0 0 0 / 73%);
+        border-radius: 18px 0 18px 0;
+        box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;
+        transform: scale(.1);
+        transition: all 1s ease;
+        margin-top: 120px;
+        margin-left: 0;
+        margin-right: 0;
+        color: var(--tombol-teks);
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);
     }
-
-    .love__img img {
- 
-            width: 84px;
-
-    }
-
-    .content .right .image {
+    blockquote{width:400px;text-align:center;line-height:1.3em;padding:20px 25px 20px 25px;}
+    blockquote::before{content:attr(data-text);opacity:.7;font-family: sans-serif;position:absolute;left:8px;top:8px;min-width:15px;font-size:16px;text-align:center}
+    blockquote::after{content: "";position: absolute;border: 1px solid #fff;border-radius:18px 0 18px 0;top: -8px;bottom: -8px;left: -8px;right: -8px;}
+    blockquote p{font-size:16px;font-weight:700;line-height:1.4em;transition:all .5s ease;}
+    blockquote > #kalimatb, blockquote > .sty2{font-size:15px;font-weight:400}
+    blockquote > #pesan4{margin-top:25px} blockquote > .sty2{line-height:1em;}
+    blockquote p:not(#opsL, #kalimat, #kalimatb, .sty2){display:none;}
+    blockquote > #opsL{text-align:right;font-size:11px;font-weight:400;line-height:0;margin-top:24px;color:white;opacity:0;transition:all .2s ease;}
+    
+    #waktu{display:none}
+    #kado1, #kado2, #kado3{font-size:16px;font-weight:400;}
+    #kalimatAkhir{transform:scale(.1);}
+    #kado1{position:absolute;opacity:0}
+    #kalove{font-size:25px;line-height:0;}
+    .kolombar .inibar{position:absolute;opacity:0;visibility:hidden;background-color:#fff;height:5px;width:100%}
+    
+    #Tombol{position:relative;opacity:0;margin:0;display:flex;align-items:left;list-style:none;transform: scale(.1);transition:all 1s ease;}
+    #Tombol a{cursor:pointer;display:inline-flex;align-items:center; margin:0;margin:12px 0 12px 0;transition:all .2s ease;padding:10px;outline:0;border: 1px solid #fff;border-radius:18px;line-height:15px;background:rgba(0,0,0,.5);color:var(--tombol-teks);font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;z-index:1} 
+    #Bn{margin:12px 0 12px 12px !important;}
+    #Bn2{position:absolute;opacity:0;width:0}
+    
+    #Content {
+    
+        animation-name: none;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
         position: relative;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        overflow: hidden;
+        opacity: 0;
+        margin-top: 50px;
+        width: 100%;
+        height: 100vh;
+        transition: all .7s ease;
+    }
+    #Content > * {
         display: flex;
         align-items: center;
-        border: 6px solid var(--color-black);
+        text-align: center;
+        justify-content: center;
+        margin-top: 19px;
+    }
+    .kumpulanstiker > img{display:none;background: rgba(255, 255, 255, 0.2);box-shadow: 0 4px 30px rgba(255,255,255, 0.3);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 0.3);border-radius: 50%;padding:10px;width:100px;height:100px;margin:20px 0;}
+    #fotostiker{opacity:.1;transition:all 1.2s ease;transform: scale(.1);}
+    .halo{font-size:18px !important;position:relative;margin:15px 0 20px 0} 
+    .halo.sty2{font-family:var(--gaya-font2);font-size:24px !important;margin-top:20px !important;}
+    .halo.sty3{position:absolute !important;font-size:14px !important;font-weight:400 !important;margin:30px 20px !important;}
+    #kalimatbawah{position: absolute;opacity:0;transform: scale(.3);margin:50px 0;font-family:var(--gaya-font2);font-size:20px;font-weight:700;color:white;text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);transition:all .5s ease;}
+    #tanggal{position: absolute;opacity:0;transform: scale(.3);transition:all .5s ease;}
+    
+    #fotolove img{transition:all .5s ease;width:75px;height:75px;padding:0;background:none}
+    #kadoIn img {
+        display: inline-flex;
+        background: none;
+        width: 317px;
+        height: 280px;
+        margin-bottom: 26px;
+        transition: all .3s ease;
+    }
+    #ket, .halo {
+        text-shadow: 1px 1px 2px rgb(10 3 3 / 67%);
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-weight: 700;
+        margin-left: 36px;
+        color: #240606;
+        /* backdrop-filter: blur(8px); */
     }
 
-    .name {
-        position: absolute;
-        padding: 0px 3px;
-        bottom: -6px;
-        border: 3px solid var(--color-black);
+
+    #kadoIn img:hover{transform:scale(.9);}
+    
+    #kolombaru{position:absolute;opacity:0;display:flex;transform:scale(.1);transition:all 1s ease;align-items:center;text-align:center;justify-content:center;z-index:1;}
+    #kolombaru > li{margin:8px;padding:0;list-style-type: none;}
+    #kolombaru li{opacity:.8;display:flex;font-size:30px}
+    #kolombaru li:hover{opacity:.5;transform: scale(1.15);transition:all .3s ease;}
+    
+    .kolomrange{padding:0;background:none;position:relative;z-index:1;display:none;transition:all 1s ease;align-items:center;}
+    .kolomrange .inirange{width:100%;height:40px;margin-right:15px;display:flex;align-items:center;text-align:center;justify-content:center;}
+    .kolomrange .inirange input{height:10px;width:100%;-webkit-appearance:none;outline:none;background:#f2f2f2;border-radius:25px;box-shadow:inset 0px 0px 4px rgba(0,0,0,0.2);}
+    .kolomrange .inirange input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;border:3px solid #006FFF;background:white;transition:all .2s ease;}
+    .kolomrange .inirange input::-webkit-slider-thumb:hover{border:5px solid #006FFF;}
+    .kolomrange .inivalue{color:white;font-size:20px}
+    
+    .swal2-modal > *{font-size:16px;}
+    .swal2-title{line-height:1.3em;font-size:17px;text-align:center;padding:15px 30px 0 30px;}
+    .swal2-timer-progress-bar-container > *{opacity:.7;background:#00B6FF;margin:0 2px}
+    .swal2-modal {
+        background: #ffffff;
+        box-shadow: 0 4px 30px rgb(74 74 74 / 57%);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        max-width: 330px;
+        top: -60px;
+    }
+    .swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel{position: relative;background-color: #4839eb;color: #fff;border-radius:18px;z-index: 1;transition: all 0.2s;}
+    
+    .fa-snowflake {opacity:.3;color:white;font-size: 20px;position: absolute;animation:  heartMove linear 1;top: -10vh;z-index: 0;}
+    @keyframes heartMove {0%{transform: translateY(-10vh) ;} 100%{transform: translateY(100vh) ;}}
+    .sembunyi, #pesanditolak > *, #kado2, #kado3{display:none !important}
+
+
+    .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+        background: linear-gradient(to bottom, #ffe1e1, #ff217de0), url(./r.jpg);
+        height: 100vh;
     }
 
-    .name span {
-        font-size: 1rem;
+    .kumpulanstiker img {
+        transform: scale(2) !important;
     }
 
-    .right .balloon_one {
-        position: absolute;
-        top: 10px;
-        left: -77px;
-        animation: balloon1 2s infinite linear;
+    #ket {
+        margin-top: 3px !important;
+        backdrop-filter: blur(8px);
     }
-
-    .right .balloon_one img{
-        width: 76px !important;
-    }
-
-
-}
